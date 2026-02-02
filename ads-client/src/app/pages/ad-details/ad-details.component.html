@@ -1,0 +1,27 @@
+<div class="container" *ngIf="!loading && ad">
+  <div class="card">
+    <div class="image-wrapper">
+      <img [src]="ad.imageUrl" [alt]="ad.title" />
+    </div>
+
+    <div class="content">
+      <h1>{{ ad.title }}</h1>
+
+      <p class="price">
+        {{ ad.price | currency:'EUR' }}
+      </p>
+
+      <p class="description">
+        {{ ad.description }}
+      </p>
+
+      <button class="contact-btn">
+        Kontaktiraj prodavca
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="loading">
+  Učitavanje oglasa...
+</div>

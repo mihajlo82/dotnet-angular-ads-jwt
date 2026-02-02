@@ -1,0 +1,68 @@
+<div class="dashboard">
+  <div class="header">
+    <h1>Ads Dashboard</h1>
+    <button class="add-btn" (click)="openCreate()">+ Add Ad</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading ads...</div>
+
+  <!-- Desktop Table -->
+  <table class="ads-table" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ad of ads">
+        <td>
+          <img [src]="ad.imageUrl" alt="" />
+        </td>
+        <td>{{ ad.title }}</td>
+        <td>{{ ad.price | currency: "EUR" }}</td>
+        <td class="actions">
+          <button class="edit">Edit</button>
+          <button class="delete" (click)="deleteAd(ad.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Mobile Cards -->
+  <div class="cards" *ngIf="!loading">
+    <div class="card" *ngFor="let ad of ads">
+      <img [src]="ad.imageUrl" alt="" />
+
+      <div class="info">
+        <h3>{{ ad.title }}</h3>
+        <span>{{ ad.price | currency: "EUR" }}</span>
+      </div>
+
+      <div class="actions">
+        <button class="edit" (click)="openEdit(ad)">Edit</button>
+        <button class="delete" (click)="deleteAd(ad.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-ad-form-modal
+  *ngIf="showModal"
+  [ad]="selectedAd"
+  (save)="saveAd($event)"
+  (close)="showModal = false"
+>
+</app-ad-form-modal>
+<!-- <button class="edit" (click)="openEdit(ad)">Edit</button> -->
+
+<!-- <app-ad-form-modal
+  *ngIf="showModal"
+  [ad]="selectedAd"
+  (save)="saveAd($event)"
+  (close)="showModal = false">
+</app-ad-form-modal> -->
+
+<!-- <router-outlet /> -->

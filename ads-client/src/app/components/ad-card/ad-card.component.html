@@ -1,0 +1,10 @@
+<div class="ad-card">
+  <img [src]="ad.imageUrl" alt="{{ ad.title }}" class="ad-image" />
+  <div class="ad-content">
+    <h3>{{ ad.title }}</h3>
+    <p>{{ ad.description }}</p>
+    <span class="ad-price">${{ ad.price }}</span>
+  </div>
+
+  <a [routerLink]="['/ads', ad.id]"> Pogledaj detalje </a>
+</div>

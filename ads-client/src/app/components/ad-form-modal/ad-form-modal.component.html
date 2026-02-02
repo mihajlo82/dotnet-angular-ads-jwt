@@ -1,0 +1,36 @@
+<div class="backdrop" (click)="close.emit()"></div>
+
+<div class="modal">
+  <h2>{{ ad ? 'Edit Ad' : 'Create Ad' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input type="text" placeholder="Title" formControlName="title" />
+
+    <textarea
+      rows="4"
+      placeholder="Description"
+      formControlName="description">
+    </textarea>
+
+    <input
+      type="number"
+      placeholder="Price"
+      formControlName="price"
+    />
+
+    <input
+      type="text"
+      placeholder="Image URL"
+      formControlName="imageUrl"
+    />
+
+    <div class="actions">
+      <button type="button" class="cancel" (click)="close.emit()">
+        Cancel
+      </button>
+      <button type="submit" class="save" [disabled]="form.invalid">
+        Save
+      </button>
+    </div>
+  </form>
+</div>

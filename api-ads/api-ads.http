@@ -1,0 +1,6 @@
+@api_ads_HostAddress = http://localhost:5098
+
+GET {{api_ads_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

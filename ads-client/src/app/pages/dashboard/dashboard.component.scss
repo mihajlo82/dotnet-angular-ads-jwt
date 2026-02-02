@@ -1,0 +1,136 @@
+.dashboard {
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  h1 {
+    margin: 0;
+  }
+
+  .add-btn {
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    border: none;
+    background: #1976d2;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background: #125aa0;
+    }
+  }
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* 🖥 Desktop Table */
+.ads-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+  }
+
+  thead {
+    background: #f5f7fa;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #eee;
+  }
+
+  img {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+/* Buttons */
+button.edit {
+  background: #ffb300;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.delete {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 📱 Mobile Cards */
+.cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .ads-table {
+    display: none;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 1rem;
+
+      h3 {
+        margin: 0 0 0.3rem;
+      }
+
+      span {
+        font-weight: 700;
+        color: #2e7d32;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+  }
+}
