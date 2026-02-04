@@ -26,6 +26,7 @@ services:
   api:
     build:
       context: ./api-ads
+    image: mihidimi82/ads-api:latest
     container_name: ads-api
     environment:
       ASPNETCORE_ENVIRONMENT: Production
@@ -46,6 +47,7 @@ services:
     build:
       context: ./ads-client
     container_name: ads-client
+    image: mihidimi82/ads-client:latest
     ports:
       - "80:80"
     depends_on:
