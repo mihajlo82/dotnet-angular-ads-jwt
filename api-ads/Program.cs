@@ -88,7 +88,27 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); // <-- automatically applies migrations
+}
+
+
+// Only redirect to HTTPS in development if needed
+if (app.Environment.IsDevelopment())
+{
+   app.UseHttpsRedirection();
+
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+else
+{
+    // Enable detailed errors in production only for testing
+    app.UseExceptionHandler("/error"); // optional
+}
 app.UseCors("AllowAngular");
 
 app.UseAuthentication();

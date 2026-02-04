@@ -28,3 +28,10 @@ README.md
 !.git/config
 !.git/packed-refs
 !.git/refs/heads/**
+
+# Visual Studio
+.vs/
+
+# Build outputs
+bin/
+obj/

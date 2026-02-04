@@ -7,7 +7,8 @@ import { Ad } from '../models/ad.model';
   providedIn: 'root',
 })
 export class AdsService {
-  private apiUrl = 'https://localhost:32769/api/ad'; // Your .NET API endpoint
+  // private apiUrl = 'https://localhost:32769/api/ad'; // Your .NET API endpoint
+  private apiUrl = '/api/ad'; // Your .NET API endpoint
 
   constructor(private http: HttpClient) {}
 

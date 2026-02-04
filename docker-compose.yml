@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: ads-postgres
+    environment:
+      POSTGRES_DB: ads
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  api:
+    build:
+      context: ./api-ads
+    container_name: ads-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=Ads;Username=postgres;Password=root
+      Jwt__Key: supersecretkey12345678901234567890
+      Jwt__Issuer: ads-api
+      Jwt__Audience: ads-client
+    expose:
+      - "8080"
+    depends_on:
+      - postgres
+
+  client:
+    build:
+      context: ./ads-client
+    container_name: ads-client
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
