@@ -38,5 +38,5 @@ jobs:
           echo "List files in current directory:"
           ls -lah
           cd dotnet-angular-ads-jwt
-          docker compose pull
-          docker compose up -d
+          sudo docker compose pull
+          sudo docker compose up -d
